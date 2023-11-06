@@ -1,16 +1,33 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
-	<link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
+    <!-- Create a div to display browser information -->
+    <div id="browser-info"></div>
 
+    <script>
+        // Get the user's browser information from the navigator object
+        const browserName = navigator.appName;
+        const browserVersion = navigator.appVersion;
+
+        // Find the browser name and version from the user agent string
+        const userAgent = navigator.userAgent;
+        const regex = /(\w+)\/([\d.]+)/;
+        const match = userAgent.match(regex);
+
+        let detectedBrowserName = browserName;
+        let detectedBrowserVersion = browserVersion;
+
+        if (match) {
+            detectedBrowserName = match[1];
+            detectedBrowserVersion = match[2];
+        }
+
+        // Display the browser information on the page
+        const browserInfoDiv = document.getElementById("browser-info");
+        browserInfoDiv.textContent = "You are using " + detectedBrowserName + " version " + detectedBrowserVersion;
+    </script>
 </body>
-
 </html>
